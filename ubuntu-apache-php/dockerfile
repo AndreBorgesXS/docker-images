@@ -1,0 +1,17 @@
+# Usar a imagem base do Ubuntu
+FROM ubuntu:latest
+
+# Atualizar pacotes e instalar Apache e PHP
+RUN apt-get update && apt-get install -y apache2 php libapache2-mod-php
+
+# Copiar a página HTML para o diretório padrão do Apache
+COPY index.html /var/www/html/
+
+# Copiar a página de teste PHP para o diretório padrão do Apache
+COPY info.php /var/www/html/
+
+# Expor a porta 80
+EXPOSE 80
+
+# Iniciar o Apache em segundo plano
+CMD ["apachectl", "-D", "FOREGROUND"]
