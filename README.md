@@ -6,7 +6,6 @@ Instruções de como criar imagem do docker e disponibilizar no Docker Hub
 
 ## Gerar docker file
 
-Instale my-project com npm
 
 ```bash
   docker build -t meu-servidor-apache .
