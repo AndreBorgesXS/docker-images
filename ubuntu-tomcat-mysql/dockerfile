@@ -1,0 +1,23 @@
+# Usar a imagem base do Ubuntu
+FROM ubuntu:latest
+
+# Atualizar pacotes e instalar Java, Tomcat e MySQL
+RUN apt-get update && apt-get install -y default-jdk wget mysql-server
+
+# Instalar Tomcat
+RUN wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.93/bin/apache-tomcat-9.0.93.tar.gz -P /tmp
+RUN mkdir /opt/tomcat
+RUN tar -xzvf /tmp/apache-tomcat-9.0.93.tar.gz -C /opt/tomcat --strip-components=1
+
+# Configurar MySQL
+RUN service mysql start && \
+    mysql -e "UPDATE mysql.user SET Host='localhost' WHERE User='root';" && \
+    mysql -e "CREATE USER 'aluno'@'localhost' IDENTIFIED BY 'senha';" && \
+    mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'aluno'@'localhost';" && \
+    mysql -e "FLUSH PRIVILEGES;"
+
+# Expor as portas 8080 e 3306
+EXPOSE 8080 3306
+
+# Iniciar o Tomcat e o MySQL usando argumentos JSON
+CMD ["sh", "-c", "service mysql start && /opt/tomcat/bin/catalina.sh run"]

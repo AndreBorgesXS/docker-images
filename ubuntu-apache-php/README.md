@@ -15,8 +15,8 @@ Instruções de como criar imagem do docker e disponibilizar no Docker Hub
 
 
 ## Executar o contêiner Docker
-```
-docker run -d -p 80:80 meu-servidor-apache
+```bash
+  docker run -d -p 80:80 meu-servidor-apache
 
 ```
     
