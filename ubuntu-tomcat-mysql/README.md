@@ -38,6 +38,17 @@ Etapas:
 
 ```
 
+## Baixar e rodar do repositório original
+
+```bash
+  docker pull kopecode/meu-servidor-tomcat-mysql
+
+```
+```bash
+  docker run -d -p 8080:8080 -p 3306:3306 kopecode/meu-servidor-tomcat-mysql
+
+```
+
 ## Repositório Docker
 
  - [Docker](https://hub.docker.com/r/kopecode/meu-servidor-tomcat-mysql)

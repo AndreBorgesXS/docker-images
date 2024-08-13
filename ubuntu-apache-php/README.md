@@ -38,6 +38,18 @@ Etapas:
 
 ```
 
+## Baixar e rodar do repositório original
+
+```bash
+  docker pull kopecode/meu-servidor-apache
+
+```
+
+```bash
+  docker run -d -p 80:80 kopecode/meu-servidor-apache
+
+```
+
 ## Repositório Docker
 
  - [Docker](https://hub.docker.com/r/kopecode/meu-servidor-apache)
